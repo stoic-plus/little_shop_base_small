@@ -14,7 +14,7 @@ class Item < ApplicationRecord
   }
 
   def to_param
-    "#{id}-#{slug}"
+    slug
   end
 
   def self.item_popularity(count, order)

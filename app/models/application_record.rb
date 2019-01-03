@@ -5,7 +5,8 @@ class ApplicationRecord < ActiveRecord::Base
   private
 
   def generate_slug
-    return false unless self.class == Item
-    self.slug = "#{name.downcase.gsub(" ", "-")}#{SecureRandom.hex(3)}" if name
+    return false unless self.class == Item || self.class == User
+    self.slug = "#{id}-#{name.parameterize}" if name && self.class == Item
+    self.slug = email.parameterize if name && self.class == User
   end
 end

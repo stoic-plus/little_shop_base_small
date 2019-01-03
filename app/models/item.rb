@@ -3,7 +3,7 @@ class Item < ApplicationRecord
   has_many :order_items
   has_many :orders, through: :order_items
 
-  validates_presence_of :name, :description
+  validates_presence_of :name, :slug, :description
   validates :price, presence: true, numericality: {
     only_integer: false,
     greater_than_or_equal_to: 0

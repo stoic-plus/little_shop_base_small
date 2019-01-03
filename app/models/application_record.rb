@@ -7,8 +7,9 @@ class ApplicationRecord < ActiveRecord::Base
   def generate_slug
     return false unless self.class == Item || self.class == User
 
-    self.slug = email.parameterize.gsub("_", "-") if self.class == User
-    if self.class == Item
+    if self.class == User
+      self.slug = email.parameterize.gsub("_", "-") if email
+    else
       slug = name.parameterize
       self.slug = check_for_existing_slug(slug)
     end

@@ -10,7 +10,7 @@ class Dashboard::ItemsController < Dashboard::BaseController
   end
 
   def edit
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:slug])
     @form_path = [:dashboard, @item]
   end
 
@@ -43,7 +43,7 @@ class Dashboard::ItemsController < Dashboard::BaseController
   end
 
   def destroy
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:slug])
     merchant = @item.user
     if @item && @item.ever_ordered?
       flash[:error] = "Attempt to delete #{@item.name} was thwarted!"
@@ -62,7 +62,7 @@ class Dashboard::ItemsController < Dashboard::BaseController
     if current_admin?
       @merchant = User.find(params[:merchant_id])
     end
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:slug])
 
     ip = item_params
     if ip[:image].empty?
@@ -102,7 +102,7 @@ class Dashboard::ItemsController < Dashboard::BaseController
   end
 
   def set_item_active(state)
-    item = Item.find(params[:id])
+    item = Item.find(params[:slug])
     item.active = state
     item.save
     if current_admin?

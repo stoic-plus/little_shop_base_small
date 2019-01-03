@@ -1,6 +1,6 @@
 class Admin::MerchantsController < Admin::BaseController
   def show
-    @merchant = User.find(params[:id])
+    @merchant = User.find(params[:slug])
     if @merchant.default?
       redirect_to admin_user_path(@merchant)
     else

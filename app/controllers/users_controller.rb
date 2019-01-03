@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.find(params[:slug])
     render file: 'errors/not_found', status: 404 unless current_user == @user || current_admin?
 
     @user.update(user_params)

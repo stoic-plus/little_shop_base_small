@@ -8,26 +8,26 @@ class CartController < ApplicationController
   end
 
   def add_item
-    add_item_to_cart(params[:id])
+    add_item_to_cart(params[:slug])
     redirect_to items_path
   end
 
   def add_more_item
-    add_item_to_cart(params[:id])
+    add_item_to_cart(params[:slug])
     redirect_to cart_path
   end
 
   def remove_more_item
-    item = Item.find(params[:id])
-    @cart.subtract_item(item.id)
+    item = Item.find(params[:slug])
+    @cart.subtract_item(item.slug)
     flash[:success] = "You have removed 1 package of #{item.name} from your cart, new quantity is #{@cart.count_of(item.id)}"
     session[:cart] = @cart.contents
     redirect_to cart_path
   end
 
   def remove_all_of_item
-    item = Item.find(params[:id])
-    @cart.remove_all_of_item(item.id)
+    item = Item.find(params[:slug])
+    @cart.remove_all_of_item(item.slug)
     flash[:success] = "You have removed all packages of #{item.name} from your cart"
     session[:cart] = @cart.contents
     redirect_to cart_path

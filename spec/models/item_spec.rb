@@ -70,8 +70,7 @@ RSpec.describe Item, type: :model do
     it '#generate_slug' do
       @m = create(:merchant)
       @i = create(:item, user: @m, name: "Bobs Crazy Nuts")
-      allow(SecureRandom).to receive(:hex).and_return("6512")
-      expect(@i.slug).to eq("bobs-crazy-nuts6512")
+      expect(@i.slug).to match(/bobs-crazy-nuts\w{6}/)
     end
   end
 end

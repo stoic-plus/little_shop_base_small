@@ -17,6 +17,15 @@ RSpec.describe Item, type: :model do
     it { should have_many(:orders).through(:order_items) }
   end
 
+  describe 'slugs' do
+    it 'creates a default slug using name' do
+      @m = create(:merchant)
+      @i = create(:item, user: @m, name: "Bobs Crazy Nuts")
+      allow(SecureRandom).to receive(:hex).and_return("6512")
+      expect(@i.slug).to eq("bobs-crazy-nuts6512")
+    end
+  end
+
   describe 'class methods' do
     describe 'item popularity' do
       before :each do

@@ -10,6 +10,10 @@ class User < ApplicationRecord
 
   enum role: [:default, :merchant, :admin]
 
+  def to_param
+    slug
+  end
+
   def self.top_3_revenue_merchants
     User.joins(items: :order_items)
       .select('users.*, sum(order_items.quantity * order_items.price) as revenue')

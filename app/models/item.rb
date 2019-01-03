@@ -13,6 +13,10 @@ class Item < ApplicationRecord
     greater_than_or_equal_to: 0
   }
 
+  def to_param
+    slug
+  end
+
   def self.item_popularity(count, order)
     Item.joins(:order_items)
       .select("items.*, sum(order_items.quantity) as total_ordered")

@@ -18,7 +18,7 @@ class CartController < ApplicationController
   end
 
   def remove_more_item
-    item = Item.find(params[:slug])
+    item = Item.find_by(slug: params[:slug])
     @cart.subtract_item(item.slug)
     flash[:success] = "You have removed 1 package of #{item.name} from your cart, new quantity is #{@cart.count_of(item.id)}"
     session[:cart] = @cart.contents
@@ -26,7 +26,7 @@ class CartController < ApplicationController
   end
 
   def remove_all_of_item
-    item = Item.find(params[:slug])
+    item = Item.find_by(slug: params[:slug])
     @cart.remove_all_of_item(item.slug)
     flash[:success] = "You have removed all packages of #{item.name} from your cart"
     session[:cart] = @cart.contents

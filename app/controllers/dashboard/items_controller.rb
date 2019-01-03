@@ -22,7 +22,7 @@ class Dashboard::ItemsController < Dashboard::BaseController
     ip[:active] = true
     @merchant = current_user
     if current_admin?
-      @merchant = User.find_by(slug: params[:slug])
+      @merchant = User.find_by(slug: params[:merchant_slug])
     end
     @item = @merchant.items.create(ip)
     if @item.save
@@ -60,7 +60,7 @@ class Dashboard::ItemsController < Dashboard::BaseController
   def update
     @merchant = current_user
     if current_admin?
-      @merchant = User.find_by(slug: params[:slug])
+      @merchant = User.find_by(slug: params[:merchant_slug])
     end
     @item = Item.find_by(slug: params[:slug])
 

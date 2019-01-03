@@ -4,7 +4,7 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def show
-    @user = User.find_by(slug: params[:user_slug])
+    @user = User.find_by(slug: params[:slug])
     if @user.merchant?
       redirect_to admin_merchant_path(@user)
     else
@@ -13,7 +13,7 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def edit
-    @user = User.find_by(slug: params[:user_slug])
+    @user = User.find_by(slug: params[:slug])
     @user.password_digest = nil
     render :'users/edit'
   end

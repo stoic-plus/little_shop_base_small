@@ -11,7 +11,6 @@ class Dashboard::ItemsController < Dashboard::BaseController
 
   def edit
     @item = Item.find_by(slug: params[:item_slug])
-    binding.pry
     @form_path = [:dashboard, @item]
   end
 
@@ -29,7 +28,6 @@ class Dashboard::ItemsController < Dashboard::BaseController
     if @item.save
       flash[:success] = "#{@item.name} has been added!"
       if current_admin?
-        binding.pry
         redirect_to admin_merchant_items_path(@merchant)
       else
         redirect_to dashboard_items_path
@@ -64,7 +62,6 @@ class Dashboard::ItemsController < Dashboard::BaseController
     if current_admin?
       @merchant = User.find_by(slug: params[:merchant_slug])
     end
-    binding.pry
     @item = Item.find_by(slug: params[:item_slug])
 
     ip = item_params

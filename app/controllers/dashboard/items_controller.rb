@@ -10,7 +10,8 @@ class Dashboard::ItemsController < Dashboard::BaseController
   end
 
   def edit
-    @item = Item.find_by(slug: params[:slug])
+    @item = Item.find_by(slug: params[:item_slug])
+    binding.pry
     @form_path = [:dashboard, @item]
   end
 
@@ -28,6 +29,7 @@ class Dashboard::ItemsController < Dashboard::BaseController
     if @item.save
       flash[:success] = "#{@item.name} has been added!"
       if current_admin?
+        binding.pry
         redirect_to admin_merchant_items_path(@merchant)
       else
         redirect_to dashboard_items_path
@@ -43,7 +45,7 @@ class Dashboard::ItemsController < Dashboard::BaseController
   end
 
   def destroy
-    @item = Item.find_by(slug: params[:slug])
+    @item = Item.find_by(slug: params[:item_slug])
     merchant = @item.user
     if @item && @item.ever_ordered?
       flash[:error] = "Attempt to delete #{@item.name} was thwarted!"
@@ -62,7 +64,8 @@ class Dashboard::ItemsController < Dashboard::BaseController
     if current_admin?
       @merchant = User.find_by(slug: params[:merchant_slug])
     end
-    @item = Item.find_by(slug: params[:slug])
+    binding.pry
+    @item = Item.find_by(slug: params[:item_slug])
 
     ip = item_params
     if ip[:image].empty?
@@ -102,7 +105,7 @@ class Dashboard::ItemsController < Dashboard::BaseController
   end
 
   def set_item_active(state)
-    item = Item.find_by(slug: params[:slug])
+    item = Item.find_by(slug: params[:item_slug])
     item.active = state
     item.save
     if current_admin?

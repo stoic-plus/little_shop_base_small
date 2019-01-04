@@ -11,7 +11,6 @@ class ApplicationRecord < ActiveRecord::Base
       self.slug = email.parameterize.gsub("_", "-") if email
     else
       slug = name.parameterize
-      binding.pry
       self.slug = check_for_existing_slug(slug)
     end
   end

@@ -67,10 +67,16 @@ RSpec.describe Item, type: :model do
       expect(item_2.ever_ordered?).to eq(false)
     end
 
-    it '#generate_slug' do
-      @m = create(:merchant)
-      @i = create(:item, user: @m, name: "Bobs Crazy Nuts")
-      expect(@i.slug).to match(/bobs-crazy-nuts\w{6}/)
+    it '#generate_slug - creates using name and updates when name is changed' do
+      m = create(:merchant)
+      i = create(:item, user: m, name: "Bobs Crazy Nuts")
+      expect(i.slug).to eq("bobs-crazy-nuts")
+
+      i.name = "Bob's Happy Nuts"
+      i.save
+      i.reload
+
+      expect(i.slug).to eq("bob-s-happy-nuts")
     end
   end
 end

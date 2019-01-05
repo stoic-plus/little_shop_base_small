@@ -170,8 +170,207 @@ RSpec.describe User, type: :model do
         expect(@merchant.top_3_revenue_users[2].revenue).to eq(120)
       end
     end
+    describe "more merchant stats methods - item fulfilment speed"
+      it '.top_5_merchants_item_fulfillment_speed_city' do
+        user_1 = create(:user, city: 'Springfield', state: 'CO')
+        user_2 = create(:user, city: 'Las Vegas', state: 'NV')
+        user_3 = create(:user, city: 'Denver', state: 'CO')
 
-    describe "more merchant stats methods for extension - current month" do
+        m1 = create(:merchant)
+        m2 = create(:merchant)
+        m3 = create(:merchant)
+        m4 = create(:merchant)
+        m5 = create(:merchant)
+        m6 = create(:merchant)
+
+        item_1 = create(:item, user: m1)
+        item_2 = create(:item, user: m2)
+        item_3 = create(:item, user: m3)
+        item_4 = create(:item, user: m4)
+        item_5 = create(:item, user: m5)
+        item_6 = create(:item, user: m6)
+
+        order_1_a = create(:completed_order, user: user_1)
+        oi_1_a = create(:fulfilled_order_item, order: order_1_a, item: item_1, quantity: 10, created_at: 7.days.ago, updated_at: 1.days.ago)
+
+        order_2_a = create(:completed_order, user: user_1)
+        oi_2_a = create(:fulfilled_order_item, order: order_2_a, item: item_2, quantity: 10, created_at: 6.days.ago, updated_at: 1.days.ago)
+
+        order_3_a = create(:completed_order, user: user_1)
+        oi_3_a = create(:fulfilled_order_item, order: order_3_a, item: item_3, quantity: 10, created_at: 5.days.ago, updated_at: 1.days.ago)
+
+        order_4_a = create(:completed_order, user: user_1)
+        oi_4_a = create(:fulfilled_order_item, order: order_4_a, item: item_4, quantity: 10, created_at: 4.days.ago, updated_at: 1.days.ago)
+
+        order_5_a = create(:completed_order, user: user_1)
+        oi_5_a = create(:fulfilled_order_item, order: order_5_a, item: item_5, quantity: 10, created_at: 3.days.ago, updated_at: 1.days.ago)
+
+        order_6_a = create(:completed_order, user: user_1)
+        oi_6_a = create(:fulfilled_order_item, order: order_6_a, item: item_6, quantity: 10, created_at: 2.days.ago, updated_at: 1.days.ago)
+
+
+
+        order_1_b = create(:completed_order, user: user_3)
+        oi_1_b = create(:fulfilled_order_item, order: order_1_b, item: item_6, quantity: 10, created_at: 7.days.ago, updated_at: 1.days.ago)
+
+        order_2_b = create(:completed_order, user: user_3)
+        oi_2_b = create(:fulfilled_order_item, order: order_2_b, item: item_5, quantity: 10, created_at: 6.days.ago, updated_at: 1.days.ago)
+
+        order_3_b = create(:completed_order, user: user_3)
+        oi_3_b = create(:fulfilled_order_item, order: order_3_b, item: item_4, quantity: 10, created_at: 5.days.ago, updated_at: 1.days.ago)
+
+        order_4_b = create(:completed_order, user: user_3)
+        oi_4_b = create(:fulfilled_order_item, order: order_4_b, item: item_3, quantity: 10, created_at: 4.days.ago, updated_at: 1.days.ago)
+
+        order_5_b = create(:completed_order, user: user_3)
+        oi_5_b = create(:fulfilled_order_item, order: order_5_b, item: item_2, quantity: 10, created_at: 3.days.ago, updated_at: 1.days.ago)
+
+        order_6_b = create(:completed_order, user: user_3)
+        oi_6_b = create(:fulfilled_order_item, order: order_6_b, item: item_1, quantity: 10, created_at: 2.days.ago, updated_at: 1.days.ago)
+
+
+        order_1_c = create(:completed_order, user: user_2)
+        oi_1_c = create(:fulfilled_order_item, order: order_1_c, item: item_2, quantity: 10, created_at: 7.days.ago, updated_at: 1.days.ago)
+
+        order_2_c = create(:completed_order, user: user_2)
+        oi_2_c = create(:fulfilled_order_item, order: order_2_c, item: item_5, quantity: 10, created_at: 6.days.ago, updated_at: 1.days.ago)
+
+        order_3_c = create(:completed_order, user: user_2)
+        oi_3_c = create(:fulfilled_order_item, order: order_3_c, item: item_4, quantity: 10, created_at: 5.days.ago, updated_at: 1.days.ago)
+
+        order_4_c = create(:completed_order, user: user_2)
+        oi_4_c = create(:fulfilled_order_item, order: order_4_c, item: item_1, quantity: 10, created_at: 4.days.ago, updated_at: 1.days.ago)
+
+        order_5_c = create(:completed_order, user: user_2)
+        oi_5_c = create(:fulfilled_order_item, order: order_5_c, item: item_3, quantity: 10, created_at: 3.days.ago, updated_at: 1.days.ago)
+
+        order_6_c = create(:completed_order, user: user_2)
+        oi_6_c = create(:fulfilled_order_item, order: order_6_c, item: item_6, quantity: 10, created_at: 2.days.ago, updated_at: 1.days.ago)
+
+        user_3_top_5 = user_3.top_5_merchants_item_fulfillment_speed_city
+        user_2_top_5 = user_2.top_5_merchants_item_fulfillment_speed_city
+        user_1_top_5 = user_1.top_5_merchants_item_fulfillment_speed_city
+
+        expect(user_3_top_5[0].merchant_id).to eq(m1.id)
+        expect(user_3_top_5[1].merchant_id).to eq(m2.id)
+        expect(user_3_top_5[2].merchant_id).to eq(m3.id)
+        expect(user_3_top_5[3].merchant_id).to eq(m4.id)
+        expect(user_3_top_5[4].merchant_id).to eq(m5.id)
+
+        expect(user_2_top_5[0].merchant_id).to eq(m6.id)
+        expect(user_2_top_5[1].merchant_id).to eq(m3.id)
+        expect(user_2_top_5[2].merchant_id).to eq(m1.id)
+        expect(user_2_top_5[3].merchant_id).to eq(m4.id)
+        expect(user_2_top_5[4].merchant_id).to eq(m5.id)
+
+        expect(user_1_top_5[0].merchant_id).to eq(m6.id)
+        expect(user_1_top_5[1].merchant_id).to eq(m5.id)
+        expect(user_1_top_5[2].merchant_id).to eq(m4.id)
+        expect(user_1_top_5[3].merchant_id).to eq(m3.id)
+        expect(user_1_top_5[4].merchant_id).to eq(m2.id)
+      end
+
+      it '.top_5_merchants_item_fulfillment_speed_state' do
+        user_1 = create(:user, state: 'CO')
+        user_2 = create(:user, state: 'NV')
+        user_3 = create(:user, state: 'CA')
+
+        m1 = create(:merchant)
+        m2 = create(:merchant)
+        m3 = create(:merchant)
+        m4 = create(:merchant)
+        m5 = create(:merchant)
+        m6 = create(:merchant)
+
+        item_1 = create(:item, user: m1)
+        item_2 = create(:item, user: m2)
+        item_3 = create(:item, user: m3)
+        item_4 = create(:item, user: m4)
+        item_5 = create(:item, user: m5)
+        item_6 = create(:item, user: m6)
+
+        order_1_a = create(:completed_order, user: user_1)
+        oi_1_a = create(:fulfilled_order_item, order: order_1_a, item: item_1, quantity: 10, created_at: 7.days.ago, updated_at: 1.days.ago)
+
+        order_2_a = create(:completed_order, user: user_1)
+        oi_2_a = create(:fulfilled_order_item, order: order_2_a, item: item_2, quantity: 10, created_at: 6.days.ago, updated_at: 1.days.ago)
+
+        order_3_a = create(:completed_order, user: user_1)
+        oi_3_a = create(:fulfilled_order_item, order: order_3_a, item: item_3, quantity: 10, created_at: 5.days.ago, updated_at: 1.days.ago)
+
+        order_4_a = create(:completed_order, user: user_1)
+        oi_4_a = create(:fulfilled_order_item, order: order_4_a, item: item_4, quantity: 10, created_at: 4.days.ago, updated_at: 1.days.ago)
+
+        order_5_a = create(:completed_order, user: user_1)
+        oi_5_a = create(:fulfilled_order_item, order: order_5_a, item: item_5, quantity: 10, created_at: 3.days.ago, updated_at: 1.days.ago)
+
+        order_6_a = create(:completed_order, user: user_1)
+        oi_6_a = create(:fulfilled_order_item, order: order_6_a, item: item_6, quantity: 10, created_at: 2.days.ago, updated_at: 1.days.ago)
+
+
+
+        order_1_b = create(:completed_order, user: user_3)
+        oi_1_b = create(:fulfilled_order_item, order: order_1_b, item: item_6, quantity: 10, created_at: 7.days.ago, updated_at: 1.days.ago)
+
+        order_2_b = create(:completed_order, user: user_3)
+        oi_2_b = create(:fulfilled_order_item, order: order_2_b, item: item_5, quantity: 10, created_at: 6.days.ago, updated_at: 1.days.ago)
+
+        order_3_b = create(:completed_order, user: user_3)
+        oi_3_b = create(:fulfilled_order_item, order: order_3_b, item: item_4, quantity: 10, created_at: 5.days.ago, updated_at: 1.days.ago)
+
+        order_4_b = create(:completed_order, user: user_3)
+        oi_4_b = create(:fulfilled_order_item, order: order_4_b, item: item_3, quantity: 10, created_at: 4.days.ago, updated_at: 1.days.ago)
+
+        order_5_b = create(:completed_order, user: user_3)
+        oi_5_b = create(:fulfilled_order_item, order: order_5_b, item: item_2, quantity: 10, created_at: 3.days.ago, updated_at: 1.days.ago)
+
+        order_6_b = create(:completed_order, user: user_3)
+        oi_6_b = create(:fulfilled_order_item, order: order_6_b, item: item_1, quantity: 10, created_at: 2.days.ago, updated_at: 1.days.ago)
+
+
+        order_1_c = create(:completed_order, user: user_2)
+        oi_1_c = create(:fulfilled_order_item, order: order_1_c, item: item_2, quantity: 10, created_at: 7.days.ago, updated_at: 1.days.ago)
+
+        order_2_c = create(:completed_order, user: user_2)
+        oi_2_c = create(:fulfilled_order_item, order: order_2_c, item: item_5, quantity: 10, created_at: 6.days.ago, updated_at: 1.days.ago)
+
+        order_3_c = create(:completed_order, user: user_2)
+        oi_3_c = create(:fulfilled_order_item, order: order_3_c, item: item_4, quantity: 10, created_at: 5.days.ago, updated_at: 1.days.ago)
+
+        order_4_c = create(:completed_order, user: user_2)
+        oi_4_c = create(:fulfilled_order_item, order: order_4_c, item: item_1, quantity: 10, created_at: 4.days.ago, updated_at: 1.days.ago)
+
+        order_5_c = create(:completed_order, user: user_2)
+        oi_5_c = create(:fulfilled_order_item, order: order_5_c, item: item_3, quantity: 10, created_at: 3.days.ago, updated_at: 1.days.ago)
+
+        order_6_c = create(:completed_order, user: user_2)
+        oi_6_c = create(:fulfilled_order_item, order: order_6_c, item: item_6, quantity: 10, created_at: 2.days.ago, updated_at: 1.days.ago)
+
+        user_3_top_5 = user_3.top_5_merchants_item_fulfillment_speed_state
+        user_2_top_5 = user_2.top_5_merchants_item_fulfillment_speed_state
+        user_1_top_5 = user_1.top_5_merchants_item_fulfillment_speed_state
+
+        expect(user_3_top_5[0].merchant_id).to eq(m1.id)
+        expect(user_3_top_5[1].merchant_id).to eq(m2.id)
+        expect(user_3_top_5[2].merchant_id).to eq(m3.id)
+        expect(user_3_top_5[3].merchant_id).to eq(m4.id)
+        expect(user_3_top_5[4].merchant_id).to eq(m5.id)
+
+        expect(user_2_top_5[0].merchant_id).to eq(m6.id)
+        expect(user_2_top_5[1].merchant_id).to eq(m3.id)
+        expect(user_2_top_5[2].merchant_id).to eq(m1.id)
+        expect(user_2_top_5[3].merchant_id).to eq(m4.id)
+        expect(user_2_top_5[4].merchant_id).to eq(m5.id)
+
+        expect(user_1_top_5[0].merchant_id).to eq(m6.id)
+        expect(user_1_top_5[1].merchant_id).to eq(m5.id)
+        expect(user_1_top_5[2].merchant_id).to eq(m4.id)
+        expect(user_1_top_5[3].merchant_id).to eq(m3.id)
+        expect(user_1_top_5[4].merchant_id).to eq(m2.id)
+      end
+
+    end
+    describe "more merchant stats methods - items and orders current month" do
       before :each do
         travel_to Time.zone.local(2018, 01, 28, 0, 0, 0)
 
@@ -321,10 +520,10 @@ RSpec.describe User, type: :model do
         @order_9_1 = create(:completed_order, user: @user_2)
         @oi_9_1 = create(:fulfilled_order_item, order: @order_9_1, item: @item_9, quantity: 1, created_at: 4.days.ago, updated_at: 1.days.ago)
 
-        @order_10 = create(:completed_order, user: @user_3)
+        @order_10 = create(:completed_order, user: @user_4)
         @oi_10 = create(:fulfilled_order_item, order: @order_10, item: @item_10, quantity: 2, created_at: 3.days.ago, updated_at: 1.days.ago)
 
-        @order_11 = create(:completed_order, user: @user_3)
+        @order_11 = create(:completed_order, user: @user_4)
         @oi_11 = create(:fulfilled_order_item, order: @order_11, item: @item_11, quantity: 1, created_at: 2.days.ago, updated_at: 1.days.ago)
 
 
@@ -344,16 +543,12 @@ RSpec.describe User, type: :model do
       it '.top_10_merchants_orders_fulfilled' do
         expect(User.top_10_merchants_orders_fulfilled(:current)).to eq([@m1, @m2, @m3, @m4, @m5, @m6, @m7, @m8, @m9, @m10])
       end
-
-      it '.top_5_merchants_item_fulfillment_speed' do
-        expect(User.top_5_merchants_item_fulfillment_speed(:current)).to eq([@m11, @m10, @m9, @m8, @m7])
-      end
     end
 
-    describe "more merchant stats methods for extension - past month" do
+    describe "more merchant stats methods- items and orders past month" do
       before :each do
         travel_to Time.zone.local(2018, 01, 01, 4, 4, 4)
-        
+
         @user_1 = create(:user, city: 'Springfield', state: 'MO')
         @user_2 = create(:user, city: 'Springfield', state: 'CO')
         @user_3 = create(:user, city: 'Las Vegas', state: 'NV')
@@ -523,10 +718,5 @@ RSpec.describe User, type: :model do
       it '.top_10_merchants_orders_fulfilled' do
         expect(User.top_10_merchants_orders_fulfilled(:past)).to eq([@m1, @m2, @m3, @m4, @m5, @m6, @m7, @m8, @m9, @m10])
       end
-
-      it '.top_5_merchants_item_fulfillment_speed' do
-        expect(User.top_5_merchants_item_fulfillment_speed(:past)).to eq([@m11, @m10, @m9, @m8, @m7])
-      end
     end
-end
 end

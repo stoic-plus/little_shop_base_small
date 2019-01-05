@@ -68,7 +68,7 @@ class User < ApplicationRecord
       .limit(10)
   end
 
-  def top_5_merchants_item_fulfillment_speed(state_or_city)
+  def top_5_merchants_item_fulfillment_speed_city
     User.joins("INNER JOIN orders on orders.user_id = users.id
                 INNER JOIN order_items ON order_items.order_id = orders.id
                 INNER JOIN items ON order_items.item_id = items.id")
@@ -78,6 +78,19 @@ class User < ApplicationRecord
               AND users.city = '#{self.city}'
               AND users.state = '#{self.state}'")
       .group(:city, :state, "merchant_id")
+      .order("fulfill_speed ASC")
+      .limit(5)
+  end
+
+  def top_5_merchants_item_fulfillment_speed_state
+    User.joins("INNER JOIN orders on orders.user_id = users.id
+                INNER JOIN order_items ON order_items.order_id = orders.id
+                INNER JOIN items ON order_items.item_id = items.id")
+      .select("users.state, items.merchant_id as merchant_id,
+               AVG(order_items.updated_at - order_items.created_at) as fulfill_speed")
+      .where("order_items.fulfilled = true
+              AND users.state = '#{self.state}'")
+      .group(:state, "merchant_id")
       .order("fulfill_speed ASC")
       .limit(5)
   end

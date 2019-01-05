@@ -173,6 +173,8 @@ RSpec.describe User, type: :model do
 
     describe "more merchant stats methods for extension - current month" do
       before :each do
+        travel_to Time.zone.local(2018, 01, 28, 0, 0, 0)
+
         @user_1 = create(:user, city: 'Springfield', state: 'MO')
         @user_2 = create(:user, city: 'Springfield', state: 'CO')
         @user_3 = create(:user, city: 'Las Vegas', state: 'NV')
@@ -331,7 +333,9 @@ RSpec.describe User, type: :model do
 
         @order_13 = create(:completed_order, user: @user_2)
         @oi_13 = create(:fulfilled_order_item, order: @order_13, item: @item_11, quantity: 45, created_at: 71.days.ago, updated_at: 70.days.ago)
+
       end
+
       it '.top_10_merchants_items_sold' do
         returned = User.top_10_merchants_items_sold(:current)
         expect(returned).to eq([@m1, @m2, @m3, @m4, @m5, @m6, @m7, @m8, @m9, @m10])

@@ -68,15 +68,16 @@ class User < ApplicationRecord
       .limit(10)
   end
 
-  def self.top_5_merchants_item_fulfillment_speed(current_or_past_month)
-    month = self.get_month(current_or_past_month)
-
-    joins("INNER JOIN items on items.merchant_id = users.id
-           INNER JOIN order_items ON order_items.item_id = items.id")
-      .select("users.*, AVG(order_items.updated_at - order_items.created_at) as fulfill_speed")
+  def top_5_merchants_item_fulfillment_speed(state_or_city)
+    User.joins("INNER JOIN orders on orders.user_id = users.id
+                INNER JOIN order_items ON order_items.order_id = orders.id
+                INNER JOIN items ON order_items.item_id = items.id")
+      .select("users.city, users.state, items.merchant_id as merchant_id,
+               AVG(order_items.updated_at - order_items.created_at) as fulfill_speed")
       .where("order_items.fulfilled = true
-              AND extract(month FROM order_items.updated_at) = ?", month)
-      .group(:id)
+              AND users.city = '#{self.city}'
+              AND users.state = '#{self.state}'")
+      .group(:city, :state, "merchant_id")
       .order("fulfill_speed ASC")
       .limit(5)
   end
@@ -165,5 +166,9 @@ class User < ApplicationRecord
     month = (Time.zone.now.month - 1) if current_or_past_month == :past
     month = 12 if month == 0
     month
+  end
+
+  def self.get_merchant_names(merchant_ids)
+    where(id: merchant_ids)
   end
 end

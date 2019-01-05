@@ -40,6 +40,21 @@ class User < ApplicationRecord
     merchant_fulfillment_times(:desc, 3)
   end
 
+  def self.top_10_merchants_items_sold(current_or_past_month)
+    month = self.get_month(current_or_past_month)
+
+    joins("INNER JOIN items on items.merchant_id = users.id
+           INNER JOIN order_items ON order_items.item_id = items.id
+           INNER JOIN orders ON order_items.order_id = orders.id")
+      .select("users.id, sum(order_items.quantity) as quantity_sold")
+      .where("orders.status = 1
+              AND order_items.fulfilled = true
+              AND extract(month FROM order_items.updated_at) = ?", month)
+      .group(:id)
+      .order("quantity_sold DESC")
+      .limit(10)
+  end
+
   def my_pending_orders
     Order.joins(order_items: :item)
       .where("items.merchant_id=? AND orders.status=? AND order_items.fulfilled=?", self.id, 0, false)
@@ -115,5 +130,14 @@ class User < ApplicationRecord
       .group(:id)
       .order('revenue desc')
       .limit(3)
+  end
+
+  private
+
+  def self.get_month(current_or_past_month)
+    month = Time.zone.now.month if current_or_past_month == :current
+    month = (Time.zone.now.month - 1) if current_or_past_month == :past
+    month = 12 if month == 0
+    month
   end
 end

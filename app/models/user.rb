@@ -46,7 +46,7 @@ class User < ApplicationRecord
     joins("INNER JOIN items on items.merchant_id = users.id
            INNER JOIN order_items ON order_items.item_id = items.id
            INNER JOIN orders ON order_items.order_id = orders.id")
-      .select("users.*, sum(order_items.quantity) as quantity_sold")
+      .select("users.*, SUM(order_items.quantity) as quantity_sold")
       .where("orders.status = 1
               AND order_items.fulfilled = true
               AND extract(month FROM order_items.updated_at) = ?", month)
@@ -60,12 +60,25 @@ class User < ApplicationRecord
 
     joins("INNER JOIN items on items.merchant_id = users.id
            INNER JOIN order_items ON order_items.item_id = items.id")
-      .select("users.*, count(order_items.order_id) as orders_fulfilled")
+      .select("users.*, COUNT(order_items.order_id) as orders_fulfilled")
       .where("order_items.fulfilled = true
               AND extract(month FROM order_items.updated_at) = ?", month)
       .group(:id)
       .order("orders_fulfilled DESC")
       .limit(10)
+  end
+
+  def self.top_5_merchants_item_fulfillment_speed(current_or_past_month)
+    month = self.get_month(current_or_past_month)
+
+    joins("INNER JOIN items on items.merchant_id = users.id
+           INNER JOIN order_items ON order_items.item_id = items.id")
+      .select("users.*, AVG(order_items.updated_at - order_items.created_at) as fulfill_speed")
+      .where("order_items.fulfilled = true
+              AND extract(month FROM order_items.updated_at) = ?", month)
+      .group(:id)
+      .order("fulfill_speed ASC")
+      .limit(5)
   end
 
   def my_pending_orders

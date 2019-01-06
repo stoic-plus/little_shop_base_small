@@ -14,6 +14,10 @@ class MerchantsController < ApplicationController
     @top_3_states = Order.top_3_states
     @top_3_cities = Order.top_3_cities
     @top_3_quantity_orders = Order.top_3_quantity_orders
+    @top_10_merchants_items_sold_current = User.top_10_merchants_items_sold(:current)
+    @top_10_merchants_items_sold_past = User.top_10_merchants_items_sold(:past)
+    @top_10_merchants_orders_fulfilled_current = User.top_10_merchants_orders_fulfilled(:current)
+    @top_10_merchants_orders_fulfilled_past = User.top_10_merchants_orders_fulfilled(:past)
   end
 
   def show

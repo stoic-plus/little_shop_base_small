@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe "More Merchant Stats - Items and Orders" do
   before :each do
-    travel_to Time.zone.local(2019, 01, 13, 0, 0, 0)
+    travel_to Time.zone.local(2019, 01, 13, 4, 2, 1)
 
     @user_1 = create(:user, city: 'Springfield', state: 'MO')
     @user_2 = create(:user, city: 'Springfield', state: 'CO')
@@ -308,44 +308,44 @@ describe "More Merchant Stats - Items and Orders" do
         end
 
         within '.past-stats' do
-          expect(all('.top-seller')[0]).to have_content("Merchant: #{@past_top[0].name}, Items Sold: #{@past_top[0].quantity_sold}")
-          expect(all('.top-seller')[1]).to have_content("Merchant: #{@past_top[1].name}, Items Sold: #{@past_top[1].quantity_sold}")
-          expect(all('.top-seller')[2]).to have_content("Merchant: #{@past_top[2].name}, Items Sold: #{@past_top[2].quantity_sold}")
-          expect(all('.top-seller')[3]).to have_content("Merchant: #{@past_top[3].name}, Items Sold: #{@past_top[3].quantity_sold}")
-          expect(all('.top-seller')[4]).to have_content("Merchant: #{@past_top[4].name}, Items Sold: #{@past_top[4].quantity_sold}")
-          expect(all('.top-seller')[5]).to have_content("Merchant: #{@past_top[5].name}, Items Sold: #{@past_top[5].quantity_sold}")
-          expect(all('.top-seller')[6]).to have_content("Merchant: #{@past_top[6].name}, Items Sold: #{@past_top[6].quantity_sold}")
-          expect(all('.top-seller')[7]).to have_content("Merchant: #{@past_top[7].name}, Items Sold: #{@past_top[7].quantity_sold}")
-          expect(all('.top-seller')[8]).to have_content("Merchant: #{@past_top[8].name}, Items Sold: #{@past_top[8].quantity_sold}")
-          expect(all('.top-seller')[9]).to have_content("Merchant: #{@past_top[9].name}, Items Sold: #{@past_top[9].quantity_sold}")
+          expect(all('.top-seller-past')[0]).to have_content("Merchant: #{@past_top[0].name}, Items Sold: #{@past_top[0].quantity_sold}")
+          expect(all('.top-seller-past')[1]).to have_content("Merchant: #{@past_top[1].name}, Items Sold: #{@past_top[1].quantity_sold}")
+          expect(all('.top-seller-past')[2]).to have_content("Merchant: #{@past_top[2].name}, Items Sold: #{@past_top[2].quantity_sold}")
+          expect(all('.top-seller-past')[3]).to have_content("Merchant: #{@past_top[3].name}, Items Sold: #{@past_top[3].quantity_sold}")
+          expect(all('.top-seller-past')[4]).to have_content("Merchant: #{@past_top[4].name}, Items Sold: #{@past_top[4].quantity_sold}")
+          expect(all('.top-seller-past')[5]).to have_content("Merchant: #{@past_top[5].name}, Items Sold: #{@past_top[5].quantity_sold}")
+          expect(all('.top-seller-past')[6]).to have_content("Merchant: #{@past_top[6].name}, Items Sold: #{@past_top[6].quantity_sold}")
+          expect(all('.top-seller-past')[7]).to have_content("Merchant: #{@past_top[7].name}, Items Sold: #{@past_top[7].quantity_sold}")
+          expect(all('.top-seller-past')[8]).to have_content("Merchant: #{@past_top[8].name}, Items Sold: #{@past_top[8].quantity_sold}")
+          expect(all('.top-seller-past')[9]).to have_content("Merchant: #{@past_top[9].name}, Items Sold: #{@past_top[9].quantity_sold}")
         end
       end
 
       within '.top-fulfillers' do
         within '.current-stats' do
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[0].name}, Orders Fulfilled: #{@current_top_fulfill[0].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[1].name}, Orders Fulfilled: #{@current_top_fulfill[1].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[2].name}, Orders Fulfilled: #{@current_top_fulfill[2].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[3].name}, Orders Fulfilled: #{@current_top_fulfill[3].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[4].name}, Orders Fulfilled: #{@current_top_fulfill[4].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[5].name}, Orders Fulfilled: #{@current_top_fulfill[5].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[6].name}, Orders Fulfilled: #{@current_top_fulfill[6].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[7].name}, Orders Fulfilled: #{@current_top_fulfill[7].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[8].name}, Orders Fulfilled: #{@current_top_fulfill[8].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[9].name}, Orders Fulfilled: #{@current_top_fulfill[9].orders_fulfilled}")
+          expect(all('.top-fulfiller')[0]).to have_content("Merchant: #{@current_top_fulfill[0].name}, Orders Fulfilled: #{@current_top_fulfill[0].orders_fulfilled}")
+          expect(all('.top-fulfiller')[1]).to have_content("Merchant: #{@current_top_fulfill[1].name}, Orders Fulfilled: #{@current_top_fulfill[1].orders_fulfilled}")
+          expect(all('.top-fulfiller')[2]).to have_content("Merchant: #{@current_top_fulfill[2].name}, Orders Fulfilled: #{@current_top_fulfill[2].orders_fulfilled}")
+          expect(all('.top-fulfiller')[3]).to have_content("Merchant: #{@current_top_fulfill[3].name}, Orders Fulfilled: #{@current_top_fulfill[3].orders_fulfilled}")
+          expect(all('.top-fulfiller')[4]).to have_content("Merchant: #{@current_top_fulfill[4].name}, Orders Fulfilled: #{@current_top_fulfill[4].orders_fulfilled}")
+          expect(all('.top-fulfiller')[5]).to have_content("Merchant: #{@current_top_fulfill[5].name}, Orders Fulfilled: #{@current_top_fulfill[5].orders_fulfilled}")
+          expect(all('.top-fulfiller')[6]).to have_content("Merchant: #{@current_top_fulfill[6].name}, Orders Fulfilled: #{@current_top_fulfill[6].orders_fulfilled}")
+          expect(all('.top-fulfiller')[7]).to have_content("Merchant: #{@current_top_fulfill[7].name}, Orders Fulfilled: #{@current_top_fulfill[7].orders_fulfilled}")
+          expect(all('.top-fulfiller')[8]).to have_content("Merchant: #{@current_top_fulfill[8].name}, Orders Fulfilled: #{@current_top_fulfill[8].orders_fulfilled}")
+          expect(all('.top-fulfiller')[9]).to have_content("Merchant: #{@current_top_fulfill[9].name}, Orders Fulfilled: #{@current_top_fulfill[9].orders_fulfilled}")
         end
 
         within '.past-stats' do
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[0].name}, Orders Fulfilled: #{@past_top_fulfill[0].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[1].name}, Orders Fulfilled: #{@past_top_fulfill[1].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[2].name}, Orders Fulfilled: #{@past_top_fulfill[2].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[3].name}, Orders Fulfilled: #{@past_top_fulfill[3].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[4].name}, Orders Fulfilled: #{@past_top_fulfill[4].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[5].name}, Orders Fulfilled: #{@past_top_fulfill[5].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[6].name}, Orders Fulfilled: #{@past_top_fulfill[6].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[7].name}, Orders Fulfilled: #{@past_top_fulfill[7].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[8].name}, Orders Fulfilled: #{@past_top_fulfill[8].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[9].name}, Orders Fulfilled: #{@past_top_fulfill[9].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[0]).to have_content("Merchant: #{@past_top_fulfill[0].name}, Orders Fulfilled: #{@past_top_fulfill[0].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[1]).to have_content("Merchant: #{@past_top_fulfill[1].name}, Orders Fulfilled: #{@past_top_fulfill[1].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[2]).to have_content("Merchant: #{@past_top_fulfill[2].name}, Orders Fulfilled: #{@past_top_fulfill[2].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[3]).to have_content("Merchant: #{@past_top_fulfill[3].name}, Orders Fulfilled: #{@past_top_fulfill[3].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[4]).to have_content("Merchant: #{@past_top_fulfill[4].name}, Orders Fulfilled: #{@past_top_fulfill[4].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[5]).to have_content("Merchant: #{@past_top_fulfill[5].name}, Orders Fulfilled: #{@past_top_fulfill[5].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[6]).to have_content("Merchant: #{@past_top_fulfill[6].name}, Orders Fulfilled: #{@past_top_fulfill[6].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[7]).to have_content("Merchant: #{@past_top_fulfill[7].name}, Orders Fulfilled: #{@past_top_fulfill[7].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[8]).to have_content("Merchant: #{@past_top_fulfill[8].name}, Orders Fulfilled: #{@past_top_fulfill[8].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[9]).to have_content("Merchant: #{@past_top_fulfill[9].name}, Orders Fulfilled: #{@past_top_fulfill[9].orders_fulfilled}")
         end
       end
     end
@@ -369,44 +369,44 @@ describe "More Merchant Stats - Items and Orders" do
         end
 
         within '.past-stats' do
-          expect(all('.top-seller')[0]).to have_content("Merchant: #{@past_top[0].name}, Items Sold: #{@past_top[0].quantity_sold}")
-          expect(all('.top-seller')[1]).to have_content("Merchant: #{@past_top[1].name}, Items Sold: #{@past_top[1].quantity_sold}")
-          expect(all('.top-seller')[2]).to have_content("Merchant: #{@past_top[2].name}, Items Sold: #{@past_top[2].quantity_sold}")
-          expect(all('.top-seller')[3]).to have_content("Merchant: #{@past_top[3].name}, Items Sold: #{@past_top[3].quantity_sold}")
-          expect(all('.top-seller')[4]).to have_content("Merchant: #{@past_top[4].name}, Items Sold: #{@past_top[4].quantity_sold}")
-          expect(all('.top-seller')[5]).to have_content("Merchant: #{@past_top[5].name}, Items Sold: #{@past_top[5].quantity_sold}")
-          expect(all('.top-seller')[6]).to have_content("Merchant: #{@past_top[6].name}, Items Sold: #{@past_top[6].quantity_sold}")
-          expect(all('.top-seller')[7]).to have_content("Merchant: #{@past_top[7].name}, Items Sold: #{@past_top[7].quantity_sold}")
-          expect(all('.top-seller')[8]).to have_content("Merchant: #{@past_top[8].name}, Items Sold: #{@past_top[8].quantity_sold}")
-          expect(all('.top-seller')[9]).to have_content("Merchant: #{@past_top[9].name}, Items Sold: #{@past_top[9].quantity_sold}")
+          expect(all('.top-seller-past')[0]).to have_content("Merchant: #{@past_top[0].name}, Items Sold: #{@past_top[0].quantity_sold}")
+          expect(all('.top-seller-past')[1]).to have_content("Merchant: #{@past_top[1].name}, Items Sold: #{@past_top[1].quantity_sold}")
+          expect(all('.top-seller-past')[2]).to have_content("Merchant: #{@past_top[2].name}, Items Sold: #{@past_top[2].quantity_sold}")
+          expect(all('.top-seller-past')[3]).to have_content("Merchant: #{@past_top[3].name}, Items Sold: #{@past_top[3].quantity_sold}")
+          expect(all('.top-seller-past')[4]).to have_content("Merchant: #{@past_top[4].name}, Items Sold: #{@past_top[4].quantity_sold}")
+          expect(all('.top-seller-past')[5]).to have_content("Merchant: #{@past_top[5].name}, Items Sold: #{@past_top[5].quantity_sold}")
+          expect(all('.top-seller-past')[6]).to have_content("Merchant: #{@past_top[6].name}, Items Sold: #{@past_top[6].quantity_sold}")
+          expect(all('.top-seller-past')[7]).to have_content("Merchant: #{@past_top[7].name}, Items Sold: #{@past_top[7].quantity_sold}")
+          expect(all('.top-seller-past')[8]).to have_content("Merchant: #{@past_top[8].name}, Items Sold: #{@past_top[8].quantity_sold}")
+          expect(all('.top-seller-past')[9]).to have_content("Merchant: #{@past_top[9].name}, Items Sold: #{@past_top[9].quantity_sold}")
         end
       end
 
       within '.top-fulfillers' do
         within '.current-stats' do
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[0].name}, Orders Fulfilled: #{@current_top_fulfill[0].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[1].name}, Orders Fulfilled: #{@current_top_fulfill[1].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[2].name}, Orders Fulfilled: #{@current_top_fulfill[2].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[3].name}, Orders Fulfilled: #{@current_top_fulfill[3].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[4].name}, Orders Fulfilled: #{@current_top_fulfill[4].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[5].name}, Orders Fulfilled: #{@current_top_fulfill[5].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[6].name}, Orders Fulfilled: #{@current_top_fulfill[6].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[7].name}, Orders Fulfilled: #{@current_top_fulfill[7].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[8].name}, Orders Fulfilled: #{@current_top_fulfill[8].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[9].name}, Orders Fulfilled: #{@current_top_fulfill[9].orders_fulfilled}")
+          expect(all('.top-fulfiller')[0]).to have_content("Merchant: #{@current_top_fulfill[0].name}, Orders Fulfilled: #{@current_top_fulfill[0].orders_fulfilled}")
+          expect(all('.top-fulfiller')[1]).to have_content("Merchant: #{@current_top_fulfill[1].name}, Orders Fulfilled: #{@current_top_fulfill[1].orders_fulfilled}")
+          expect(all('.top-fulfiller')[2]).to have_content("Merchant: #{@current_top_fulfill[2].name}, Orders Fulfilled: #{@current_top_fulfill[2].orders_fulfilled}")
+          expect(all('.top-fulfiller')[3]).to have_content("Merchant: #{@current_top_fulfill[3].name}, Orders Fulfilled: #{@current_top_fulfill[3].orders_fulfilled}")
+          expect(all('.top-fulfiller')[4]).to have_content("Merchant: #{@current_top_fulfill[4].name}, Orders Fulfilled: #{@current_top_fulfill[4].orders_fulfilled}")
+          expect(all('.top-fulfiller')[5]).to have_content("Merchant: #{@current_top_fulfill[5].name}, Orders Fulfilled: #{@current_top_fulfill[5].orders_fulfilled}")
+          expect(all('.top-fulfiller')[6]).to have_content("Merchant: #{@current_top_fulfill[6].name}, Orders Fulfilled: #{@current_top_fulfill[6].orders_fulfilled}")
+          expect(all('.top-fulfiller')[7]).to have_content("Merchant: #{@current_top_fulfill[7].name}, Orders Fulfilled: #{@current_top_fulfill[7].orders_fulfilled}")
+          expect(all('.top-fulfiller')[8]).to have_content("Merchant: #{@current_top_fulfill[8].name}, Orders Fulfilled: #{@current_top_fulfill[8].orders_fulfilled}")
+          expect(all('.top-fulfiller')[9]).to have_content("Merchant: #{@current_top_fulfill[9].name}, Orders Fulfilled: #{@current_top_fulfill[9].orders_fulfilled}")
         end
 
         within '.past-stats' do
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[0].name}, Orders Fulfilled: #{@past_top_fulfill[0].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[1].name}, Orders Fulfilled: #{@past_top_fulfill[1].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[2].name}, Orders Fulfilled: #{@past_top_fulfill[2].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[3].name}, Orders Fulfilled: #{@past_top_fulfill[3].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[4].name}, Orders Fulfilled: #{@past_top_fulfill[4].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[5].name}, Orders Fulfilled: #{@past_top_fulfill[5].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[6].name}, Orders Fulfilled: #{@past_top_fulfill[6].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[7].name}, Orders Fulfilled: #{@past_top_fulfill[7].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[8].name}, Orders Fulfilled: #{@past_top_fulfill[8].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[9].name}, Orders Fulfilled: #{@past_top_fulfill[9].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[0]).to have_content("Merchant: #{@past_top_fulfill[0].name}, Orders Fulfilled: #{@past_top_fulfill[0].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[1]).to have_content("Merchant: #{@past_top_fulfill[1].name}, Orders Fulfilled: #{@past_top_fulfill[1].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[2]).to have_content("Merchant: #{@past_top_fulfill[2].name}, Orders Fulfilled: #{@past_top_fulfill[2].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[3]).to have_content("Merchant: #{@past_top_fulfill[3].name}, Orders Fulfilled: #{@past_top_fulfill[3].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[4]).to have_content("Merchant: #{@past_top_fulfill[4].name}, Orders Fulfilled: #{@past_top_fulfill[4].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[5]).to have_content("Merchant: #{@past_top_fulfill[5].name}, Orders Fulfilled: #{@past_top_fulfill[5].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[6]).to have_content("Merchant: #{@past_top_fulfill[6].name}, Orders Fulfilled: #{@past_top_fulfill[6].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[7]).to have_content("Merchant: #{@past_top_fulfill[7].name}, Orders Fulfilled: #{@past_top_fulfill[7].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[8]).to have_content("Merchant: #{@past_top_fulfill[8].name}, Orders Fulfilled: #{@past_top_fulfill[8].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[9]).to have_content("Merchant: #{@past_top_fulfill[9].name}, Orders Fulfilled: #{@past_top_fulfill[9].orders_fulfilled}")
         end
       end
     end
@@ -430,44 +430,44 @@ describe "More Merchant Stats - Items and Orders" do
         end
 
         within '.past-stats' do
-          expect(all('.top-seller')[0]).to have_content("Merchant: #{@past_top[0].name}, Items Sold: #{@past_top[0].quantity_sold}")
-          expect(all('.top-seller')[1]).to have_content("Merchant: #{@past_top[1].name}, Items Sold: #{@past_top[1].quantity_sold}")
-          expect(all('.top-seller')[2]).to have_content("Merchant: #{@past_top[2].name}, Items Sold: #{@past_top[2].quantity_sold}")
-          expect(all('.top-seller')[3]).to have_content("Merchant: #{@past_top[3].name}, Items Sold: #{@past_top[3].quantity_sold}")
-          expect(all('.top-seller')[4]).to have_content("Merchant: #{@past_top[4].name}, Items Sold: #{@past_top[4].quantity_sold}")
-          expect(all('.top-seller')[5]).to have_content("Merchant: #{@past_top[5].name}, Items Sold: #{@past_top[5].quantity_sold}")
-          expect(all('.top-seller')[6]).to have_content("Merchant: #{@past_top[6].name}, Items Sold: #{@past_top[6].quantity_sold}")
-          expect(all('.top-seller')[7]).to have_content("Merchant: #{@past_top[7].name}, Items Sold: #{@past_top[7].quantity_sold}")
-          expect(all('.top-seller')[8]).to have_content("Merchant: #{@past_top[8].name}, Items Sold: #{@past_top[8].quantity_sold}")
-          expect(all('.top-seller')[9]).to have_content("Merchant: #{@past_top[9].name}, Items Sold: #{@past_top[9].quantity_sold}")
+          expect(all('.top-seller-past')[0]).to have_content("Merchant: #{@past_top[0].name}, Items Sold: #{@past_top[0].quantity_sold}")
+          expect(all('.top-seller-past')[1]).to have_content("Merchant: #{@past_top[1].name}, Items Sold: #{@past_top[1].quantity_sold}")
+          expect(all('.top-seller-past')[2]).to have_content("Merchant: #{@past_top[2].name}, Items Sold: #{@past_top[2].quantity_sold}")
+          expect(all('.top-seller-past')[3]).to have_content("Merchant: #{@past_top[3].name}, Items Sold: #{@past_top[3].quantity_sold}")
+          expect(all('.top-seller-past')[4]).to have_content("Merchant: #{@past_top[4].name}, Items Sold: #{@past_top[4].quantity_sold}")
+          expect(all('.top-seller-past')[5]).to have_content("Merchant: #{@past_top[5].name}, Items Sold: #{@past_top[5].quantity_sold}")
+          expect(all('.top-seller-past')[6]).to have_content("Merchant: #{@past_top[6].name}, Items Sold: #{@past_top[6].quantity_sold}")
+          expect(all('.top-seller-past')[7]).to have_content("Merchant: #{@past_top[7].name}, Items Sold: #{@past_top[7].quantity_sold}")
+          expect(all('.top-seller-past')[8]).to have_content("Merchant: #{@past_top[8].name}, Items Sold: #{@past_top[8].quantity_sold}")
+          expect(all('.top-seller-past')[9]).to have_content("Merchant: #{@past_top[9].name}, Items Sold: #{@past_top[9].quantity_sold}")
         end
       end
 
       within '.top-fulfillers' do
         within '.current-stats' do
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[0].name}, Orders Fulfilled: #{@current_top_fulfill[0].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[1].name}, Orders Fulfilled: #{@current_top_fulfill[1].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[2].name}, Orders Fulfilled: #{@current_top_fulfill[2].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[3].name}, Orders Fulfilled: #{@current_top_fulfill[3].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[4].name}, Orders Fulfilled: #{@current_top_fulfill[4].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[5].name}, Orders Fulfilled: #{@current_top_fulfill[5].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[6].name}, Orders Fulfilled: #{@current_top_fulfill[6].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[7].name}, Orders Fulfilled: #{@current_top_fulfill[7].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[8].name}, Orders Fulfilled: #{@current_top_fulfill[8].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[9].name}, Orders Fulfilled: #{@current_top_fulfill[9].orders_fulfilled}")
+          expect(all('.top-fulfiller')[0]).to have_content("Merchant: #{@current_top_fulfill[0].name}, Orders Fulfilled: #{@current_top_fulfill[0].orders_fulfilled}")
+          expect(all('.top-fulfiller')[1]).to have_content("Merchant: #{@current_top_fulfill[1].name}, Orders Fulfilled: #{@current_top_fulfill[1].orders_fulfilled}")
+          expect(all('.top-fulfiller')[2]).to have_content("Merchant: #{@current_top_fulfill[2].name}, Orders Fulfilled: #{@current_top_fulfill[2].orders_fulfilled}")
+          expect(all('.top-fulfiller')[3]).to have_content("Merchant: #{@current_top_fulfill[3].name}, Orders Fulfilled: #{@current_top_fulfill[3].orders_fulfilled}")
+          expect(all('.top-fulfiller')[4]).to have_content("Merchant: #{@current_top_fulfill[4].name}, Orders Fulfilled: #{@current_top_fulfill[4].orders_fulfilled}")
+          expect(all('.top-fulfiller')[5]).to have_content("Merchant: #{@current_top_fulfill[5].name}, Orders Fulfilled: #{@current_top_fulfill[5].orders_fulfilled}")
+          expect(all('.top-fulfiller')[6]).to have_content("Merchant: #{@current_top_fulfill[6].name}, Orders Fulfilled: #{@current_top_fulfill[6].orders_fulfilled}")
+          expect(all('.top-fulfiller')[7]).to have_content("Merchant: #{@current_top_fulfill[7].name}, Orders Fulfilled: #{@current_top_fulfill[7].orders_fulfilled}")
+          expect(all('.top-fulfiller')[8]).to have_content("Merchant: #{@current_top_fulfill[8].name}, Orders Fulfilled: #{@current_top_fulfill[8].orders_fulfilled}")
+          expect(all('.top-fulfiller')[9]).to have_content("Merchant: #{@current_top_fulfill[9].name}, Orders Fulfilled: #{@current_top_fulfill[9].orders_fulfilled}")
         end
 
         within '.past-stats' do
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[0].name}, Orders Fulfilled: #{@past_top_fulfill[0].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[1].name}, Orders Fulfilled: #{@past_top_fulfill[1].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[2].name}, Orders Fulfilled: #{@past_top_fulfill[2].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[3].name}, Orders Fulfilled: #{@past_top_fulfill[3].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[4].name}, Orders Fulfilled: #{@past_top_fulfill[4].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[5].name}, Orders Fulfilled: #{@past_top_fulfill[5].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[6].name}, Orders Fulfilled: #{@past_top_fulfill[6].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[7].name}, Orders Fulfilled: #{@past_top_fulfill[7].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[8].name}, Orders Fulfilled: #{@past_top_fulfill[8].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[9].name}, Orders Fulfilled: #{@past_top_fulfill[9].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[0]).to have_content("Merchant: #{@past_top_fulfill[0].name}, Orders Fulfilled: #{@past_top_fulfill[0].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[1]).to have_content("Merchant: #{@past_top_fulfill[1].name}, Orders Fulfilled: #{@past_top_fulfill[1].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[2]).to have_content("Merchant: #{@past_top_fulfill[2].name}, Orders Fulfilled: #{@past_top_fulfill[2].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[3]).to have_content("Merchant: #{@past_top_fulfill[3].name}, Orders Fulfilled: #{@past_top_fulfill[3].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[4]).to have_content("Merchant: #{@past_top_fulfill[4].name}, Orders Fulfilled: #{@past_top_fulfill[4].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[5]).to have_content("Merchant: #{@past_top_fulfill[5].name}, Orders Fulfilled: #{@past_top_fulfill[5].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[6]).to have_content("Merchant: #{@past_top_fulfill[6].name}, Orders Fulfilled: #{@past_top_fulfill[6].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[7]).to have_content("Merchant: #{@past_top_fulfill[7].name}, Orders Fulfilled: #{@past_top_fulfill[7].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[8]).to have_content("Merchant: #{@past_top_fulfill[8].name}, Orders Fulfilled: #{@past_top_fulfill[8].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[9]).to have_content("Merchant: #{@past_top_fulfill[9].name}, Orders Fulfilled: #{@past_top_fulfill[9].orders_fulfilled}")
         end
       end
     end
@@ -491,44 +491,44 @@ describe "More Merchant Stats - Items and Orders" do
         end
 
         within '.past-stats' do
-          expect(all('.top-seller')[0]).to have_content("Merchant: #{@past_top[0].name}, Items Sold: #{@past_top[0].quantity_sold}")
-          expect(all('.top-seller')[1]).to have_content("Merchant: #{@past_top[1].name}, Items Sold: #{@past_top[1].quantity_sold}")
-          expect(all('.top-seller')[2]).to have_content("Merchant: #{@past_top[2].name}, Items Sold: #{@past_top[2].quantity_sold}")
-          expect(all('.top-seller')[3]).to have_content("Merchant: #{@past_top[3].name}, Items Sold: #{@past_top[3].quantity_sold}")
-          expect(all('.top-seller')[4]).to have_content("Merchant: #{@past_top[4].name}, Items Sold: #{@past_top[4].quantity_sold}")
-          expect(all('.top-seller')[5]).to have_content("Merchant: #{@past_top[5].name}, Items Sold: #{@past_top[5].quantity_sold}")
-          expect(all('.top-seller')[6]).to have_content("Merchant: #{@past_top[6].name}, Items Sold: #{@past_top[6].quantity_sold}")
-          expect(all('.top-seller')[7]).to have_content("Merchant: #{@past_top[7].name}, Items Sold: #{@past_top[7].quantity_sold}")
-          expect(all('.top-seller')[8]).to have_content("Merchant: #{@past_top[8].name}, Items Sold: #{@past_top[8].quantity_sold}")
-          expect(all('.top-seller')[9]).to have_content("Merchant: #{@past_top[9].name}, Items Sold: #{@past_top[9].quantity_sold}")
+          expect(all('.top-seller-past')[0]).to have_content("Merchant: #{@past_top[0].name}, Items Sold: #{@past_top[0].quantity_sold}")
+          expect(all('.top-seller-past')[1]).to have_content("Merchant: #{@past_top[1].name}, Items Sold: #{@past_top[1].quantity_sold}")
+          expect(all('.top-seller-past')[2]).to have_content("Merchant: #{@past_top[2].name}, Items Sold: #{@past_top[2].quantity_sold}")
+          expect(all('.top-seller-past')[3]).to have_content("Merchant: #{@past_top[3].name}, Items Sold: #{@past_top[3].quantity_sold}")
+          expect(all('.top-seller-past')[4]).to have_content("Merchant: #{@past_top[4].name}, Items Sold: #{@past_top[4].quantity_sold}")
+          expect(all('.top-seller-past')[5]).to have_content("Merchant: #{@past_top[5].name}, Items Sold: #{@past_top[5].quantity_sold}")
+          expect(all('.top-seller-past')[6]).to have_content("Merchant: #{@past_top[6].name}, Items Sold: #{@past_top[6].quantity_sold}")
+          expect(all('.top-seller-past')[7]).to have_content("Merchant: #{@past_top[7].name}, Items Sold: #{@past_top[7].quantity_sold}")
+          expect(all('.top-seller-past')[8]).to have_content("Merchant: #{@past_top[8].name}, Items Sold: #{@past_top[8].quantity_sold}")
+          expect(all('.top-seller-past')[9]).to have_content("Merchant: #{@past_top[9].name}, Items Sold: #{@past_top[9].quantity_sold}")
         end
       end
 
       within '.top-fulfillers' do
         within '.current-stats' do
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[0].name}, Orders Fulfilled: #{@current_top_fulfill[0].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[1].name}, Orders Fulfilled: #{@current_top_fulfill[1].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[2].name}, Orders Fulfilled: #{@current_top_fulfill[2].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[3].name}, Orders Fulfilled: #{@current_top_fulfill[3].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[4].name}, Orders Fulfilled: #{@current_top_fulfill[4].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[5].name}, Orders Fulfilled: #{@current_top_fulfill[5].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[6].name}, Orders Fulfilled: #{@current_top_fulfill[6].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[7].name}, Orders Fulfilled: #{@current_top_fulfill[7].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[8].name}, Orders Fulfilled: #{@current_top_fulfill[8].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@current_top_fulfill[9].name}, Orders Fulfilled: #{@current_top_fulfill[9].orders_fulfilled}")
+          expect(all('.top-fulfiller')[0]).to have_content("Merchant: #{@current_top_fulfill[0].name}, Orders Fulfilled: #{@current_top_fulfill[0].orders_fulfilled}")
+          expect(all('.top-fulfiller')[1]).to have_content("Merchant: #{@current_top_fulfill[1].name}, Orders Fulfilled: #{@current_top_fulfill[1].orders_fulfilled}")
+          expect(all('.top-fulfiller')[2]).to have_content("Merchant: #{@current_top_fulfill[2].name}, Orders Fulfilled: #{@current_top_fulfill[2].orders_fulfilled}")
+          expect(all('.top-fulfiller')[3]).to have_content("Merchant: #{@current_top_fulfill[3].name}, Orders Fulfilled: #{@current_top_fulfill[3].orders_fulfilled}")
+          expect(all('.top-fulfiller')[4]).to have_content("Merchant: #{@current_top_fulfill[4].name}, Orders Fulfilled: #{@current_top_fulfill[4].orders_fulfilled}")
+          expect(all('.top-fulfiller')[5]).to have_content("Merchant: #{@current_top_fulfill[5].name}, Orders Fulfilled: #{@current_top_fulfill[5].orders_fulfilled}")
+          expect(all('.top-fulfiller')[6]).to have_content("Merchant: #{@current_top_fulfill[6].name}, Orders Fulfilled: #{@current_top_fulfill[6].orders_fulfilled}")
+          expect(all('.top-fulfiller')[7]).to have_content("Merchant: #{@current_top_fulfill[7].name}, Orders Fulfilled: #{@current_top_fulfill[7].orders_fulfilled}")
+          expect(all('.top-fulfiller')[8]).to have_content("Merchant: #{@current_top_fulfill[8].name}, Orders Fulfilled: #{@current_top_fulfill[8].orders_fulfilled}")
+          expect(all('.top-fulfiller')[9]).to have_content("Merchant: #{@current_top_fulfill[9].name}, Orders Fulfilled: #{@current_top_fulfill[9].orders_fulfilled}")
         end
 
         within '.past-stats' do
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[0].name}, Orders Fulfilled: #{@past_top_fulfill[0].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[1].name}, Orders Fulfilled: #{@past_top_fulfill[1].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[2].name}, Orders Fulfilled: #{@past_top_fulfill[2].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[3].name}, Orders Fulfilled: #{@past_top_fulfill[3].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[4].name}, Orders Fulfilled: #{@past_top_fulfill[4].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[5].name}, Orders Fulfilled: #{@past_top_fulfill[5].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[6].name}, Orders Fulfilled: #{@past_top_fulfill[6].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[7].name}, Orders Fulfilled: #{@past_top_fulfill[7].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[8].name}, Orders Fulfilled: #{@past_top_fulfill[8].orders_fulfilled}")
-          expect(page).to have_content("Merchant: #{@past_top_fulfill[9].name}, Orders Fulfilled: #{@past_top_fulfill[9].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[0]).to have_content("Merchant: #{@past_top_fulfill[0].name}, Orders Fulfilled: #{@past_top_fulfill[0].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[1]).to have_content("Merchant: #{@past_top_fulfill[1].name}, Orders Fulfilled: #{@past_top_fulfill[1].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[2]).to have_content("Merchant: #{@past_top_fulfill[2].name}, Orders Fulfilled: #{@past_top_fulfill[2].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[3]).to have_content("Merchant: #{@past_top_fulfill[3].name}, Orders Fulfilled: #{@past_top_fulfill[3].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[4]).to have_content("Merchant: #{@past_top_fulfill[4].name}, Orders Fulfilled: #{@past_top_fulfill[4].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[5]).to have_content("Merchant: #{@past_top_fulfill[5].name}, Orders Fulfilled: #{@past_top_fulfill[5].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[6]).to have_content("Merchant: #{@past_top_fulfill[6].name}, Orders Fulfilled: #{@past_top_fulfill[6].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[7]).to have_content("Merchant: #{@past_top_fulfill[7].name}, Orders Fulfilled: #{@past_top_fulfill[7].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[8]).to have_content("Merchant: #{@past_top_fulfill[8].name}, Orders Fulfilled: #{@past_top_fulfill[8].orders_fulfilled}")
+          expect(all('.top-fulfiller-past')[9]).to have_content("Merchant: #{@past_top_fulfill[9].name}, Orders Fulfilled: #{@past_top_fulfill[9].orders_fulfilled}")
         end
       end
     end

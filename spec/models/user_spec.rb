@@ -104,6 +104,17 @@ RSpec.describe User, type: :model do
       expect(merchant.inventory_check(item.id)).to eq(item.inventory)
     end
 
+    it '#generate_slug - creates using email and updates when name is changed' do
+      m = create(:merchant, email: "j@gmail.com")
+      expect(m.slug).to eq("j-gmail-com")
+
+      m.email = "g@gmail.com"
+      m.save
+      m.reload
+
+      expect(m.slug).to eq("g-gmail-com")
+    end
+
     describe 'merchant stats methods' do
       before :each do
         @user_1 = create(:user, city: 'Springfield', state: 'MO')

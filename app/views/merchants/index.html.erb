@@ -1,5 +1,49 @@
 <h2>Merchants</h2>
 
+<h3>Leaderboard</h3>
+
+<h4>Top Merchants by Item Sold</h4>
+
+<section class='top-sellers'>
+  <p>This month</p>
+  <div class="current-stats">
+    <% @top_10_merchants_items_sold_current.each do |m| %>
+      <div class="top-seller">
+        <p>Merchant: <%= m.name %>, Items Sold: <%= m.quantity_sold %></p>
+      </div>
+    <% end %>
+  </div>
+  <p>Last month</p>
+  <div class="past-stats">
+    <% @top_10_merchants_items_sold_past.each do |m| %>
+      <div class="top-seller-past">
+        <p>Merchant: <%= m.name %>, Items Sold: <%= m.quantity_sold %></p>
+      </div>
+    <% end %>
+  </div>
+</section>
+
+<h4>Top Merchants by Orders Fulfilled</h4>
+
+<section class='top-fulfillers'>
+  <p>This month</p>
+  <div class="current-stats">
+    <% @top_10_merchants_orders_fulfilled_current.each do |m| %>
+      <div class="top-fulfiller">
+        <p>Merchant: <%= m.name %>, Orders Fulfilled: <%= m.orders_fulfilled %></p>
+      </div>
+    <% end %>
+  </div>
+  <p>Last month</p>
+  <div class="past-stats">
+    <% @top_10_merchants_orders_fulfilled_past.each do |m| %>
+      <div class="top-fulfiller-past">
+        <p>Merchant: <%= m.name %>, Orders Fulfilled: <%= m.orders_fulfilled %></p>
+      </div>
+    <% end %>
+  </div>
+</section>
+
 <table>
   <thead>
     <tr>
@@ -52,6 +96,7 @@
     <ol>
     <% @top_3_fulfilling_merchants.each do |merchant| %>
     <%= tag.li class: 'merchant' do %>
+    <% binding.pry %>
     <%= merchant.name %>, Average Fulfillment Time: <%= fulfillment_time(merchant.avg_fulfillment_time) %>
     <% end %>
     <% end unless @top_3_fulfilling_merchants.nil? %>

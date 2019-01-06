@@ -96,7 +96,6 @@
     <ol>
     <% @top_3_fulfilling_merchants.each do |merchant| %>
     <%= tag.li class: 'merchant' do %>
-    <% binding.pry %>
     <%= merchant.name %>, Average Fulfillment Time: <%= fulfillment_time(merchant.avg_fulfillment_time) %>
     <% end %>
     <% end unless @top_3_fulfilling_merchants.nil? %>

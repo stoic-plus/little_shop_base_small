@@ -8,7 +8,7 @@ module ApplicationHelper
       time = bits[0]
       output = []
 
-      if bits.length > 1
+      if bits.length > 2
         time = bits[2]
         output << "#{bits[0]} #{bits[1]}"
       end

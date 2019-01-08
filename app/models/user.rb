@@ -181,7 +181,7 @@ class User < ApplicationRecord
     month
   end
 
-  def self.get_merchants(merchant_ids)
-    where(id: merchant_ids)
+  def self.get_merchant_info(merchant_ids)
+    where(id: merchant_ids).pluck(:id, :name)
   end
 end

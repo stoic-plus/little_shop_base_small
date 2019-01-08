@@ -52,7 +52,7 @@
     <p>In <%= @state %>: </p>
     <% @top_5_merch_state.each do |merchant| %>
       <div class="top-merchant-state">
-        <p>Merchant: <%= (@top_5_merch_state_info.select{|m| m.first == merchant.merchant_id}).last %>, Fulfillment Time: <%= merchant.fulfill_speed %></p>
+        <p>Merchant: <%= (@top_5_merch_state_info.select{|m| m.first == merchant.merchant_id}).first.last %>, Fulfillment Time: <%= merchant.fulfill_speed %></p>
       </div>
     <% end %>
   </div>
@@ -60,7 +60,7 @@
     <p>In <%= @city %>, <%= @state %>: </p>
     <% @top_5_merch_city.each do |merchant| %>
       <div class="top-merchant-city">
-        <p>Merchant: <%= (@top_5_merch_city_info.select{|m| m.first == merchant.merchant_id}).last %>, Fulfillment Time: <%= merchant.fulfill_speed %></p>
+        <p>Merchant: <%= (@top_5_merch_city_info.select{|m| m.first == merchant.merchant_id}).first.last %>, Fulfillment Time: <%= merchant.fulfill_speed %></p>
       </div>
     <% end %>
   </div>

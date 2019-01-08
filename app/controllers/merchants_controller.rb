@@ -18,6 +18,13 @@ class MerchantsController < ApplicationController
     @top_10_merchants_items_sold_past = User.top_10_merchants_items_sold(:past)
     @top_10_merchants_orders_fulfilled_current = User.top_10_merchants_orders_fulfilled(:current)
     @top_10_merchants_orders_fulfilled_past = User.top_10_merchants_orders_fulfilled(:past)
+    if current_user
+      @city, @state = current_user.city, current_user.state
+      @top_5_merch_city = current_user.top_5_merchants_item_fulfillment_speed_city
+      @top_5_merch_city_info = User.get_merchant_info(@top_5_merch_city.map {|m| m.merchant_id})
+      @top_5_merch_state = current_user.top_5_merchants_item_fulfillment_speed_state
+      @top_5_merch_state_info = User.get_merchant_info(@top_5_merch_state.map {|m| m.merchant_id})
+    end
   end
 
   def show

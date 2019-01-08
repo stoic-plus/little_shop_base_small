@@ -44,6 +44,29 @@
   </div>
 </section>
 
+<% if current_user %>
+<h4>Top Merchants by Fulfillment Time</h4>
+
+<section class='top-5-stats'>
+  <div class="top-5-state">
+    <p>In <%= @state %>: </p>
+    <% @top_5_merch_state.each do |merchant| %>
+      <div class="top-merchant-state">
+        <p>Merchant: <%= (@top_5_merch_state_info.select{|m| m.first == merchant.merchant_id}).last %>, Fulfillment Time: <%= merchant.fulfill_speed %></p>
+      </div>
+    <% end %>
+  </div>
+  <div class="top-5-city">
+    <p>In <%= @city %>, <%= @state %>: </p>
+    <% @top_5_merch_city.each do |merchant| %>
+      <div class="top-merchant-city">
+        <p>Merchant: <%= (@top_5_merch_city_info.select{|m| m.first == merchant.merchant_id}).last %>, Fulfillment Time: <%= merchant.fulfill_speed %></p>
+      </div>
+    <% end %>
+  </div>
+</section>
+<% end %>
+
 <table>
   <thead>
     <tr>

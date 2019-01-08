@@ -20,10 +20,11 @@ class ApplicationRecord < ActiveRecord::Base
     return slug if found_item == self
 
     if found_item
-      if found_item.slug[0] =~ /\d/
-        return "#{found_item.slug[0].to_i + 1}#{found_item.slug[1..-1]}"
-      else
+      last_match = Item.where("slug LIKE ?", "%#{slug}").last
+      if last_match.slug == found_item.slug
         return "1-#{slug}"
+      else
+        return "#{last_match.slug[0].to_i + 1}#{last_match.slug[1..-1]}"
       end
     else
       return slug

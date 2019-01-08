@@ -71,11 +71,11 @@ describe 'More Merchant Stats - Fulfillment Speed by City/State' do
       within ".top-5-stats" do
         within '.top-5-state' do
           expect(page).to have_content("In #{@user_1.state}: ")
-          expect(all('.top-merchant-state')[0]).to have_content("Merchant: #{(top_merch.select{|m| m.first == top_5_merchant_ids[0]}).last}, Fulfillment Time: #{@top_5_state[0].fulfill_speed}")
-          expect(all('.top-merchant-state')[1]).to have_content("Merchant: #{(top_merch.select{|m| m.first == top_5_merchant_ids[1]}).last}, Fulfillment Time: #{@top_5_state[1].fulfill_speed}")
-          expect(all('.top-merchant-state')[2]).to have_content("Merchant: #{(top_merch.select{|m| m.first == top_5_merchant_ids[2]}).last}, Fulfillment Time: #{@top_5_state[2].fulfill_speed}")
-          expect(all('.top-merchant-state')[3]).to have_content("Merchant: #{(top_merch.select{|m| m.first == top_5_merchant_ids[3]}).last}, Fulfillment Time: #{@top_5_state[3].fulfill_speed}")
-          expect(all('.top-merchant-state')[4]).to have_content("Merchant: #{(top_merch.select{|m| m.first == top_5_merchant_ids[4]}).last}, Fulfillment Time: #{@top_5_state[4].fulfill_speed}")
+          expect(all('.top-merchant-state')[0]).to have_content("Merchant: #{(top_merch.select{|m| m.first == top_5_merchant_ids[0]}).first.last}, Fulfillment Time: #{@top_5_state[0].fulfill_speed}")
+          expect(all('.top-merchant-state')[1]).to have_content("Merchant: #{(top_merch.select{|m| m.first == top_5_merchant_ids[1]}).first.last}, Fulfillment Time: #{@top_5_state[1].fulfill_speed}")
+          expect(all('.top-merchant-state')[2]).to have_content("Merchant: #{(top_merch.select{|m| m.first == top_5_merchant_ids[2]}).first.last}, Fulfillment Time: #{@top_5_state[2].fulfill_speed}")
+          expect(all('.top-merchant-state')[3]).to have_content("Merchant: #{(top_merch.select{|m| m.first == top_5_merchant_ids[3]}).first.last}, Fulfillment Time: #{@top_5_state[3].fulfill_speed}")
+          expect(all('.top-merchant-state')[4]).to have_content("Merchant: #{(top_merch.select{|m| m.first == top_5_merchant_ids[4]}).first.last}, Fulfillment Time: #{@top_5_state[4].fulfill_speed}")
         end
 
         top_5_merchant_ids = @top_5_city.map {|m| m.merchant_id}
@@ -83,11 +83,11 @@ describe 'More Merchant Stats - Fulfillment Speed by City/State' do
 
         within '.top-5-city' do
           expect(page).to have_content("In #{@user_1.city}, #{@user_1.state}: ")
-          expect(all('.top-merchant-city')[0]).to have_content("Merchant: #{(top_merch.select{|m| m.first == top_5_merchant_ids[0]}).last}, Fulfillment Time: #{@top_5_city[0].fulfill_speed}")
-          expect(all('.top-merchant-city')[1]).to have_content("Merchant: #{(top_merch.select{|m| m.first == top_5_merchant_ids[1]}).last}, Fulfillment Time: #{@top_5_city[1].fulfill_speed}")
-          expect(all('.top-merchant-city')[2]).to have_content("Merchant: #{(top_merch.select{|m| m.first == top_5_merchant_ids[2]}).last}, Fulfillment Time: #{@top_5_city[2].fulfill_speed}")
-          expect(all('.top-merchant-city')[3]).to have_content("Merchant: #{(top_merch.select{|m| m.first == top_5_merchant_ids[3]}).last}, Fulfillment Time: #{@top_5_city[3].fulfill_speed}")
-          expect(all('.top-merchant-city')[4]).to have_content("Merchant: #{(top_merch.select{|m| m.first == top_5_merchant_ids[4]}).last}, Fulfillment Time: #{@top_5_city[4].fulfill_speed}")
+          expect(all('.top-merchant-city')[0]).to have_content("Merchant: #{(top_merch.select{|m| m.first == top_5_merchant_ids[0]}).first.last}, Fulfillment Time: #{@top_5_city[0].fulfill_speed}")
+          expect(all('.top-merchant-city')[1]).to have_content("Merchant: #{(top_merch.select{|m| m.first == top_5_merchant_ids[1]}).first.last}, Fulfillment Time: #{@top_5_city[1].fulfill_speed}")
+          expect(all('.top-merchant-city')[2]).to have_content("Merchant: #{(top_merch.select{|m| m.first == top_5_merchant_ids[2]}).first.last}, Fulfillment Time: #{@top_5_city[2].fulfill_speed}")
+          expect(all('.top-merchant-city')[3]).to have_content("Merchant: #{(top_merch.select{|m| m.first == top_5_merchant_ids[3]}).first.last}, Fulfillment Time: #{@top_5_city[3].fulfill_speed}")
+          expect(all('.top-merchant-city')[4]).to have_content("Merchant: #{(top_merch.select{|m| m.first == top_5_merchant_ids[4]}).first.last}, Fulfillment Time: #{@top_5_city[4].fulfill_speed}")
         end
       end
     end
